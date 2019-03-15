@@ -14,17 +14,17 @@ int * genprime(int end, int &sizeprime) {
 	int k = 0;
 	int temp;
 	for(temp = 2; temp * temp <= end; ++temp) {
-    	if (prime[temp]) {
-    		answ[k] = temp;
-    		++k;
-        	for(long long  j = temp * temp; j * j <= end; j += temp ) {
-                prime[j] = false;
-            }
-        }
-    }
-    sizeprime = k;
-    delete []prime;
-    return answ;
+		if (prime[temp]) {
+			answ[k] = temp;
+			++k;
+			for(long long  j = temp * temp; j * j <= end; j += temp ) {
+				prime[j] = false;
+			}
+		}
+	}
+	sizeprime = k;
+	delete []prime;
+	return answ;
 }
 
 
@@ -87,27 +87,27 @@ int main(int argc, char **argv) {
 		return -1;
 	}
 	for (int i = 1; i < argc; i += 2)
-    {
-        int begin = std::atoi(argv[i]);
-        int end = std::atoi(argv[i + 1]);
-        int sizeprime;
-        int  *primes = genprime(end, sizeprime);
-        int ind1 = startindex(Data, Size, begin, 0, Size);
-        int ind2 = endindex(Data, Size, end, 0, Size);
+	{
+		int begin = std::atoi(argv[i]);
+		int end = std::atoi(argv[i + 1]);
+		int sizeprime;
+		int  *primes = genprime(end, sizeprime);
+		int ind1 = startindex(Data, Size, begin, 0, Size);
+		int ind2 = endindex(Data, Size, end, 0, Size);
 
-        if (ind1 == -1 || ind2 == -1) {
-        	std::cout << 0 << std::endl;
-        	continue;
-        }
-        int counter = 0;
-        for (int i = ind1; i <= ind2; ++i) {
-        	if (isprime(Data[i], primes, sizeprime)) {
-        		++counter;
-        	}
-        }
-        std::cout << counter << std::endl;
-        delete[] primes;
-    }
+		if (ind1 == -1 || ind2 == -1) {
+			std::cout << 0 << std::endl;
+			continue;
+		}
+		int counter = 0;
+		for (int i = ind1; i <= ind2; ++i) {
+			if (isprime(Data[i], primes, sizeprime)) {
+				++counter;
+			}
+		}
+		std::cout << counter << std::endl;
+		delete[] primes;
+	}
 
 	return 0;
 }
