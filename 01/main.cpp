@@ -3,7 +3,7 @@
 #include "numbers.dat"
 
 
-int * genprime(int end, int &sizeprime) {
+int * genprime(int end, size_t &sizeprime) {
 	int size = (int) sqrt(end + 1.0);
 	int *prime = new int[size + 1];
 	int *answ = new int[size + 1];
@@ -29,7 +29,7 @@ int * genprime(int end, int &sizeprime) {
 
 
 
-bool isprime(int number, int *primes, int sizeprime) {
+bool isprime(int number, int *primes, size_t sizeprime) {
 	if (number == 1) {
 		return false;
 	}
@@ -91,7 +91,7 @@ int main(int argc, char **argv) {
     {
         int begin = std::atoi(argv[i]);
         int end = std::atoi(argv[i + 1]);
-        int sizeprime;
+        size_t sizeprime;
         int  *primes = genprime(end, sizeprime);
         int ind1 = startindex(Data, Size, begin, 0, Size);
         int ind2 = endindex(Data, Size, end, 0, Size);
@@ -111,5 +111,4 @@ int main(int argc, char **argv) {
 
 	return 0;
 }
-
 
