@@ -72,13 +72,13 @@ int main(int argc, char **argv) {
         int begin = std::atoi(argv[i]);
         int end = std::atoi(argv[i + 1]);
         size_t sizeprime;
-        int *primes = genprime(end, sizeprime);
         int ind1 = startindex(Data, Size, begin, 0, Size);
         int ind2 = endindex(Data, Size, end, 0, Size);
         if ((ind1 == -1) || (ind2 == -1)) {
             std::cout << 0 << std::endl;
             continue;
         }
+        int *primes = genprime(end, sizeprime);
         counter = 0;
         for (int i = ind1; i <= ind2; ++i) {
             if (primes[Data[i]]) {
