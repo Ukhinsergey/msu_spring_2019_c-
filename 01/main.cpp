@@ -2,7 +2,6 @@
 #include <cmath>
 #include "numbers.dat"
 
-
 int *genprime(int end, size_t &sizeprime) {
     int *prime = new int[end + 1];
     for (int i = 0 ; i < end + 1; ++i) {
@@ -21,10 +20,6 @@ int *genprime(int end, size_t &sizeprime) {
     return prime;
 }
 
-
-
-
-
 int startindex(const int * data, int n, int num, int start, int end) {
     while(true) {
         int temp = (end + start) / 2;
@@ -41,8 +36,6 @@ int startindex(const int * data, int n, int num, int start, int end) {
         }
     }
 }
-
-
 
 int endindex(const int * data, int n, int num, int start, int end) {
     while(true){
@@ -61,7 +54,6 @@ int endindex(const int * data, int n, int num, int start, int end) {
     }
 }
 
-using namespace std;
 int main(int argc, char **argv) {
     if(argc % 2 == 0 || argc == 1) {
         return -1;
@@ -88,6 +80,5 @@ int main(int argc, char **argv) {
         std::cout << counter << std::endl;
         delete[] primes;
     }
-
     return 0;
 }
