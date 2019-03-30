@@ -59,19 +59,7 @@ public:
 		return Matrix(*this);
 	}
 
-	bool operator==(const Matrix &a) const {
-		if (this == &a) {
-			return true;
-		}
-		for(int i = 0 ; i < size; ++i) {
-			if(data[i] != a.data[i]) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	bool operator==(const Matrix &a) {
+	bool operator==(const Matrix &a) const{
 		if (this == &a) {
 			return true;
 		}
@@ -92,10 +80,6 @@ public:
 	}
 
 	bool operator!=(const Matrix &a) const {
-		return !(*this == a);
-	}
-
-	bool operator!=(const Matrix &a) {
 		return !(*this == a);
 	}
 
