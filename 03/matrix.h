@@ -50,13 +50,13 @@ public:
         return columns;
     }
 
-    Matrix operator *=(int n) {
+    Matrix& operator *=(int n) {
         for(int i = 0 ; i < rows; ++i) {
             for(int j = 0 ; j < columns; ++j) {
                 (*this)[i][j] *= n;
             }
         }
-        return Matrix(*this);
+        return *this;
     }
 
     bool operator==(const Matrix &a) const{
