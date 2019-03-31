@@ -1,10 +1,11 @@
+
 #include <iostream>
 #include <cstring>
 
 class Matrix {
     const size_t rows;
     const size_t columns;
-    const long int size;
+    const unsigned long long size;
     int *data;
 
     class Proxy{
@@ -27,13 +28,11 @@ class Matrix {
     };
 
 public:
-    Matrix(size_t rows, size_t columns): rows(rows), columns(columns), size(rows * columns), data(NULL){
-        data = new int[size];
-        std::memset(data, 0, sizeof(int) * size);
-        
+    Matrix(size_t rows, size_t columns): rows(rows), columns(columns), size(rows * columns), data(nullptr){
+        data = new int[size]();   
     } 
     
-    Matrix(const Matrix &a): rows(a.rows), columns(a.columns), size(rows * columns), data(NULL) {
+    Matrix(const Matrix &a): rows(a.rows), columns(a.columns), size(rows * columns), data(nullptr) {
         data = new int[size];
         memcpy(data, a.data, size * sizeof(int));
     }
