@@ -34,12 +34,12 @@ private:
     template <class t>
     Error process(t&& val) {
         //std::cout << val << std::endl;
-        return write(val);
+        return write(std::forward<t>(val));
     }
 
     template <class t, class ... Args>
     Error process(t&& val, Args&&... args) {
-        if (process(val)== Error::NoError &&  process(std::forward<Args>(args)...) == Error::NoError) {
+        if (process(std::forward<t>(val))== Error::NoError &&  process(std::forward<Args>(args)...) == Error::NoError) {
             return Error::NoError;
         }
         return Error::CorruptedArchive;
@@ -100,12 +100,12 @@ private:
 
     template <class t>
     Error process(t&& val) {
-        return read(val);
+        return read(std::forward<t>(val));
     }
 
     template <class t, class ... Args>
     Error process(t&& val, Args&&... args) {
-        if (process(val)== Error::NoError &&  process(std::forward<Args>(args)...) == Error::NoError) {
+        if (process(std::forward<t>(val))== Error::NoError &&  process(std::forward<Args>(args)...) == Error::NoError) {
             return Error::NoError;
         }
         return Error::CorruptedArchive;
