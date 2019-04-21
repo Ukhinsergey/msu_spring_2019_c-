@@ -7,9 +7,14 @@ std::mutex m;
 std::condition_variable order;
 bool pingord;
 
+using uint = unsigned int;
+
+constexpr uint num_of_pings = 500000;
+
+
 void ping() // thread 1
 {
-    for(int i = 0; i < 500000; ++i){
+    for(int i = 0; i < num_of_pings; ++i){
 
         std::unique_lock<std::mutex> lock(m);
         while (!pingord)
@@ -23,7 +28,7 @@ void ping() // thread 1
 
 void pong() // thread 2
 {
-    for(int i = 0; i < 500000; ++i) {
+    for(int i = 0; i < num_of_pings; ++i) {
 
         std::unique_lock<std::mutex> lock(m);
         while (pingord)
