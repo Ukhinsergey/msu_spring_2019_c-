@@ -9,7 +9,7 @@ const char* input_file = "input.bin";
 const char* output_file = "output.bin";
 using uint = unsigned int;
 
- int get_file_size(string filename)
+ int get_file_size(const string &filename)
 {
     FILE *p_file = NULL;
     p_file = fopen(filename.c_str(),"rb");
